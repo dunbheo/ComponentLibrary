@@ -2,7 +2,7 @@ import React from 'react';
 import Grid, { GridHeaderRow, GridHeaderCell, GridRow, GridCell, GridFooterCell, GridFooterRow } from './components/grid/Grid';
 
 const App = () => (
-  <Grid>
+  <Grid backgroundColor="red" borderTop>
     <GridHeaderRow>
       <GridHeaderCell>Heading 1</GridHeaderCell>
       <GridHeaderCell>Heading 2</GridHeaderCell>

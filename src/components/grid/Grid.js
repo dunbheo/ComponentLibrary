@@ -1,17 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 // Grid
-const Grid = ({ children }) => (
-  <table>
-    <tbody>
-      {children}
-    </tbody>
-  </table>
-);
+
+const Grid = ({ children, backgroundColor, ...rest }) => {
+const Table = styled.table`
+border-collapse: collapse;
+background-color: ${backgroundColor};
+`;
+
+ return (
+  <Table>
+      <tbody>
+        {children.map(child => React.cloneElement(child, {...rest}))}
+      </tbody>
+    </Table>
+ );
+};
 
 Grid.propTypes = {
   children: PropTypes.element.isRequired,
+  backgroundColor: PropTypes.string,
 };
 
 // GridHeaderRow
@@ -25,7 +35,7 @@ GridHeaderRow.propTypes = {
 
 // GridHeaderCell
 export const GridHeaderCell = ({ children }) => (
-  <td>{children}</td>
+  <th>{children}</th>
 );
 
 GridHeaderCell.propTypes = {
@@ -33,8 +43,8 @@ GridHeaderCell.propTypes = {
 };
 
 // GridRow
-export const GridRow = ({ children }) => (
-  <tr>{children}</tr>
+export const GridRow = ({ children, ...rest }) => (
+  <tr>{children.map(child => React.cloneElement(child, {...rest}))}</tr>
 );
 
 GridRow.propTypes = {
@@ -42,12 +52,18 @@ GridRow.propTypes = {
 };
 
 // GridCell
-export const GridCell = ({ children }) => (
-  <td>{children}</td>
-);
+
+export const GridCell = ({ children, borderTop }) => {
+const Td = styled.td`
+border-top: ${borderTop && '1px solid gray'};
+`;
+
+ return <Td>{children}</Td>
+};
 
 GridCell.propTypes = {
   children: PropTypes.element.isRequired,
+  borderTop: PropTypes.string,
 };
 
 // GridFooterRow
