@@ -4,16 +4,18 @@ import styled from 'styled-components';
 
 // Grid
 
-const Grid = ({ children, backgroundColor, ...rest }) => {
+const Grid = ({ children, backgroundColor, color, ...rest }) => {
 const Table = styled.table`
 border-collapse: collapse;
 background-color: ${backgroundColor};
+color: ${color ? color : 'black'};
+width: 100%;
 `;
 
  return (
   <Table>
       <tbody>
-        {React.Children.map(children, (child => React.cloneElement(child, {...rest})))}
+        {React.Children.map(children, (child => React.cloneElement(child, {color, ...rest})))}
       </tbody>
     </Table>
  );
@@ -22,11 +24,12 @@ background-color: ${backgroundColor};
 Grid.propTypes = {
   children: PropTypes.node.isRequired,
   backgroundColor: PropTypes.string,
+  color: PropTypes.string,
 };
 
 // GridHeaderRow
 export const GridHeaderRow = ({ children }) => (
-    <tr>{children}</tr>
+  <tr>{children}</tr>
 );
 
 GridHeaderRow.propTypes = {
@@ -34,12 +37,20 @@ GridHeaderRow.propTypes = {
 };
 
 // GridHeaderCell
-export const GridHeaderCell = ({ children }) => (
-  <th>{children}</th>
-);
+export const GridHeaderCell = ({ children, align, width }) => {
+  const Th = styled.th`
+  text-align: ${align ? align : 'left'};
+  padding: 8px 16px 8px 16px;
+  width: ${width};
+  `;
+ 
+  return <Th>{children}</Th>;
+};
 
 GridHeaderCell.propTypes = {
   children: PropTypes.node.isRequired,
+  align: PropTypes.string,
+  width: PropTypes.string,
 };
 
 // GridRow
@@ -53,9 +64,11 @@ GridRow.propTypes = {
 
 // GridCell
 
-export const GridCell = ({ children, borderTop }) => {
+export const GridCell = ({ children, borderTop, color, align }) => {
 const Td = styled.td`
-border-top: ${borderTop && '1px solid gray'};
+border-top: ${borderTop && `1px solid ${color ? color : 'black'}`};
+text-align: ${align ? align : 'left'};
+padding: 8px 16px 8px 16px;
 `;
 
  return <Td>{children}</Td>
@@ -64,6 +77,8 @@ border-top: ${borderTop && '1px solid gray'};
 GridCell.propTypes = {
   children: PropTypes.node.isRequired,
   borderTop: PropTypes.bool,
+  align: PropTypes.string,
+  color: PropTypes.string,
 };
 
 // GridFooterRow

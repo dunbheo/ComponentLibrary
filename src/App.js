@@ -3,20 +3,22 @@ import Grid, { GridHeaderRow, GridHeaderCell, GridRow, GridCell, GridFooterCell,
 import Items from './mocks/mockItems';
 
 const App = () => (
-  <Grid backgroundColor="red" borderTop>
-    <GridHeaderRow>
-      <GridHeaderCell>Weapon</GridHeaderCell>
-      <GridHeaderCell>Weight</GridHeaderCell>
-      <GridHeaderCell>Value</GridHeaderCell>
-    </GridHeaderRow>
-      {Items.map(i => (
-        <GridRow key={i.name}>
-          <GridCell>{i.name}</GridCell>
-          <GridCell>{i.weight}</GridCell>
-          <GridCell>{i.value}</GridCell>
-        </GridRow>
-      ))}
-  </Grid>
+  <div className="old-paper"style={{width: '50%'}}>
+    <Grid backgroundColor="rgba(12,0,0,.5)" color="white" borderTop>
+      <GridHeaderRow>
+        <GridHeaderCell>Weapon</GridHeaderCell>
+        <GridHeaderCell align="right">Weight</GridHeaderCell>
+        <GridHeaderCell align="right">Value</GridHeaderCell>
+      </GridHeaderRow>
+        {Items.map(i => (
+          <GridRow key={i.name}>
+            <GridCell>{i.name}</GridCell>
+            <GridCell align="right">{i.weight}</GridCell>
+            <GridCell align="right">{i.value}</GridCell>
+          </GridRow>
+        ))}
+    </Grid>
+  </div>
 );
 
 export default App;
