@@ -54,9 +54,14 @@ GridHeaderCell.propTypes = {
 };
 
 // GridRow
-export const GridRow = ({ children, ...rest }) => (
-  <tr>{React.Children.map(children, (child => React.cloneElement(child, {...rest})))}</tr>
-);
+export const GridRow = ({ children, ...rest }) => {
+  const Tr = styled.tr`
+  &:hover {
+    background: rgba(12, 0, 0, .2);
+  }
+  `;
+ return <Tr>{React.Children.map(children, (child => React.cloneElement(child, {...rest})))}</Tr>
+};
 
 GridRow.propTypes = {
   children: PropTypes.node.isRequired,
