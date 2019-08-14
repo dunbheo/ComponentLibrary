@@ -20,7 +20,7 @@ background-color: ${backgroundColor};
 };
 
 Grid.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
   backgroundColor: PropTypes.string,
 };
 
@@ -30,7 +30,7 @@ export const GridHeaderRow = ({ children }) => (
 );
 
 GridHeaderRow.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 // GridHeaderCell
@@ -39,7 +39,7 @@ export const GridHeaderCell = ({ children }) => (
 );
 
 GridHeaderCell.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 // GridRow
@@ -48,7 +48,7 @@ export const GridRow = ({ children, ...rest }) => (
 );
 
 GridRow.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 // GridCell
@@ -62,8 +62,8 @@ border-top: ${borderTop && '1px solid gray'};
 };
 
 GridCell.propTypes = {
-  children: PropTypes.element.isRequired,
-  borderTop: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  borderTop: PropTypes.bool,
 };
 
 // GridFooterRow
@@ -72,7 +72,7 @@ GridCell.propTypes = {
 );
 
 GridFooterRow.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 // GridFooterCell
@@ -81,7 +81,7 @@ export const GridFooterCell = ({ children }) => (
 );
 
 GridFooterCell.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Grid;

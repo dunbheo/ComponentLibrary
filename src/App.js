@@ -11,9 +11,9 @@ const App = () => (
     </GridHeaderRow>
       {Items.map(i => (
         <GridRow key={i.name}>
-          <GridCell key={i.name}>{i.name}</GridCell>
-          <GridCell key={i.weight}>{i.weight}</GridCell>
-          <GridCell key={i.value}>{i.value}</GridCell>
+          <GridCell>{i.name}</GridCell>
+          <GridCell>{i.weight}</GridCell>
+          <GridCell>{i.value}</GridCell>
         </GridRow>
       ))}
   </Grid>
