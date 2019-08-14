@@ -1,0 +1,11 @@
+.my-class {
+  color: white;
+}
+
+div {
+  padding: 16px;
+}
+
+.old-paper {
+  background-image: url("./images/old-paper.jpg");
+}
