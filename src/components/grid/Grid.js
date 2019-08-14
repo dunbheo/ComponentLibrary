@@ -13,7 +13,7 @@ background-color: ${backgroundColor};
  return (
   <Table>
       <tbody>
-        {children.map(child => React.cloneElement(child, {...rest}))}
+        {React.Children.map(children, (child => React.cloneElement(child, {...rest})))}
       </tbody>
     </Table>
  );
@@ -44,7 +44,7 @@ GridHeaderCell.propTypes = {
 
 // GridRow
 export const GridRow = ({ children, ...rest }) => (
-  <tr>{children.map(child => React.cloneElement(child, {...rest}))}</tr>
+  <tr>{React.Children.map(children, (child => React.cloneElement(child, {...rest})))}</tr>
 );
 
 GridRow.propTypes = {
