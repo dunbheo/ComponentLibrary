@@ -42,6 +42,7 @@ export const GridHeaderCell = ({ children, align, width }) => {
   text-align: ${align ? align : 'left'};
   padding: 8px 16px 8px 16px;
   width: ${width};
+  font-size: 18px;
   `;
  
   return <Th>{children}</Th>;
